@@ -44,7 +44,7 @@ The final LDA model is built with **number of topics - 6**
 
 The FLASK app is deployed on Heroku. 
 
-![NewsCategory](https://github.com/PavithraRajen/news_headline_category/blob/main/static/img/app.png)
+![NewsCategory](https://github.com/PavithraRajen/news_headline_category/blob/main/static/img/app.PNG)
 
 Find the app here - **https://news-topics.herokuapp.com/**
 
