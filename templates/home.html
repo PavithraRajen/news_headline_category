@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NewsCategory</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<h2>Categorize the News!!</h2>
+<div class="btn">
+<button class="button1" onclick="onClick1(this)">Category 1</button>
+<button class="button2" onclick="onClick2(this)">Category 2</button>
+<button class="button3" onclick="onClick3(this)">Category 3</button>
+<button class="button4" onclick="onClick4(this)">Category 4</button>
+<button class="button5" onclick="onClick5(this)">Category 5</button>
+<button class="button6" onclick="onClick6(this)">Category 6</button>
+</div>
+
+<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+  <span class="w3-closebtn w3-hover-red w3-text-white w3-xxlarge w3-container w3-display-topright">&times;</span>
+  <div class="w3-modal-content w3-animate-zoom">
+  <center>
+    <img id="img01">
+    </center>
+  </div>
+</div>
+   
+<div class="container">
+  <form action="/" method="POST">
+    
+  <div class="row">
+      <textarea id="message" name="message" placeholder="Write something.." style="height:150px"></textarea>
+  </div>
+  <div class="row">
+    
+    <input type="submit" value="Classify News">
+     
+     
+    <div class= "category">
+    
+     <p> {{ document }} </p>
+<b><p class="pred" >{{ prediction }}</p></b>
+
+<div>
+  </div>
+ </form>
+ </div> 
+ 
+
+ <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<script>
+function onClick1(element) {
+  document.getElementById("img01").src = "{{ url_for('static', filename='img/Category1.png') }}";
+  document.getElementById("modal01").style.display = "block";
+}
+
+function onClick2(element) {
+  document.getElementById("img01").src = "{{ url_for('static', filename='img/Category2.png') }}";
+  document.getElementById("modal01").style.display = "block";
+}
+function onClick3(element) {
+  document.getElementById("img01").src = "{{ url_for('static', filename='img/Category3.png') }}";
+  document.getElementById("modal01").style.display = "block";
+}
+function onClick4(element) {
+  document.getElementById("img01").src = "{{ url_for('static', filename='img/Category4.png') }}";
+  document.getElementById("modal01").style.display = "block";
+}
+function onClick5(element) {
+  document.getElementById("img01").src = "{{ url_for('static', filename='img/Category5.png') }}";
+  document.getElementById("modal01").style.display = "block";
+}
+function onClick6(element) {
+  document.getElementById("img01").src = "{{ url_for('static', filename='img/Category6.png') }}";
+  document.getElementById("modal01").style.display = "block";
+}
+</script>
+
+</body>
+</html>
