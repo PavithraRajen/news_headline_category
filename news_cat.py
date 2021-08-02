@@ -41,7 +41,7 @@ news_df["News_clean"] = news_df["News"].apply(lambda x: preprocess_text(x))
 processed_docs = []
 
 for doc in news_df['News_clean']:
-    processed_docs.append(preprocess_text(doc))
+    processed_docs.append(doc)
 
 dictionary = corpora.Dictionary(processed_docs)
 
@@ -54,7 +54,7 @@ coherence = []
 for k in range(3,15):
     print('Round: '+str(k))
     Lda = gensim.models.ldamodel.LdaModel
-    ldamodel = Lda(doc_term_matrix, num_topics=k, id2word = dictionary,passes=4,eval_every = None)
+    ldamodel = Lda(doc_tfidf, num_topics=k, id2word = dictionary,passes=4,eval_every = None)
     
     cm = gensim.models.coherencemodel.CoherenceModel(model=ldamodel, texts=processed_docs,\
                                                       dictionary=dictionary, coherence='c_v')
@@ -75,7 +75,7 @@ plt.show()
 
 
 
-#Number of Topics selected - 6 (3)
+#Number of Topics selected - 6 (2nd option 3)
 
 Lda = gensim.models.ldamodel.LdaModel
 ldamodel_tfidf = Lda(doc_tfidf, num_topics=6, id2word = dictionary, passes=4, eval_every = None, random_state=0)
@@ -84,7 +84,7 @@ pickle.dump(ldamodel_tfidf, open('ldamodel_tfidf.pkl', 'wb'))
 pickle.dump(dictionary, open('dictionary.pkl', 'wb'))
     
 
-
+"""
 topic_data =  pyLDAvis.gensim_models.prepare(ldamodel_tfidf, doc_tfidf, dictionary, mds = 'pcoa')
 pyLDAvis.display(topic_data)
 
@@ -98,7 +98,7 @@ for i in range(1,7):
     all_topics['Topic '+str(i)] = topic.sort_values(by='relevance', ascending=False).Term[:num_terms].values
 
 a = pd.DataFrame(all_topics).T
-
+"""
 
 
 #topic word clouds
